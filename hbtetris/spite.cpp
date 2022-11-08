@@ -1,52 +1,29 @@
 #include "spite.h"
-#include "draw.h"
-#include "shape.h"
+#include <stdlib.h>
+#include "block.h"
+#include "board.h"
+#include "config.h"
+#include "spite_queue.h"
 
-const int spite_width = 4;
-const int spite_height = 4;
-
-int spite_block_id = 'Z';
-int spite_block_sub_id = 0;
 int spite_x = 0;
 int spite_y = 0;
+block_t* spite_block;
 
 void spite_new() {
-  block_t* block = block_get('I');  // block_random();
+  spite_block = spite_queue_get();
 
-  spite_block_id = block->id;
-  spite_block_sub_id = 0;
-  spite_x = 3;
-  spite_y = -3;
+  int board_cols = board_get_cols();
+
+  spite_x = (board_cols - spite_block->cols) / 2;
+  spite_y = -4;
 }
 
-void spite_draw() {
-  int* spite_shape = block_get_shape(spite_block_id, spite_block_sub_id);
-
-  for (int y = 0; y < spite_height; y++) {
-    for (int x = 0; x < spite_width; x++) {
-      int idx = y * spite_width + x;
-      int point = spite_shape[idx];
-      if (point) {
-        draw_board_cell(spite_x + x, spite_y + y, fi_cell_color);
-      }
-    }
-  }
+int spite_get_x() {
+  return spite_x;
 }
 
-void spite_get_rotate_id(int* id, int* subid) {
-  int new_sub_id = block_get_rotate_shape(spite_block_id, spite_block_sub_id);
-  *id = spite_block_id;
-  *subid = new_sub_id;
-}
-
-int* spite_get_rotate_shape() {
-  int* shape = block_get_shape(spite_block_id, spite_block_sub_id);
-  return shape;
-}
-
-void spite_rotate() {
-  int new_sub_id = block_get_rotate_shape(spite_block_id, spite_block_sub_id);
-  spite_block_sub_id = new_sub_id;
+int spite_get_y() {
+  return spite_y;
 }
 
 void spite_move_left() {
@@ -66,68 +43,55 @@ void spite_move_down() {
 }
 
 int spite_get_cell(int x, int y) {
-  int* spite_shape = block_get_shape(spite_block_id, spite_block_sub_id);
-  return spite_shape[y * spite_width + x];
+  return block_get_cell(spite_block, x, y);
 }
 
-int spite_get_x() {
-  return spite_x;
+bool spite_some_cell(int dx, int dy, bool (*predicate)(int, int)) {
+  return block_some_cell(spite_block, dx, dy, predicate);
 }
 
-int spite_get_y() {
-  return spite_y;
+void spite_foreach_cell(int dx, int dy, void (*predicate)(int, int)) {
+  block_foreach_cell(spite_block, dx, dy, predicate);
 }
 
-int spite_get_id() {
-  return spite_block_id;
+bool spite_can_move_left() {
+  return !spite_some_cell(+spite_x - 1, +spite_y, board_collison);
 }
 
-int spite_get_sub_id() {
-  return spite_block_sub_id;
+bool spite_can_move_right() {
+  return !spite_some_cell(+spite_x + 1, +spite_y, board_collison);
 }
 
-/**
- * 判断是否一个有效格子满足条件.
- *
- * \param predicate 判断回调
- * \return
- */
-bool spite_some_cell(bool (*predicate)(int, int)) {
-  int* spite_shape = block_get_shape(spite_block_id, spite_block_sub_id);
+bool spite_can_move_down() {
+  return !spite_some_cell(+spite_x, +spite_y + 1, board_collison);
+}
+
+block_t* spite_get_rotate_shape() {
+  return block_get_rotate_shape(spite_block);
+}
+
+void spite_rotate() {
+  block_t* ratate_block = spite_get_rotate_shape();
+  spite_block = ratate_block;
+}
+
+bool spite_can_rotate() {
+  block_t* rotate_spite = spite_get_rotate_shape();
+  return !block_some_cell(rotate_spite, +spite_x, +spite_y, board_collison);
+}
+
+void spite_draw() {
+  int* spite_shape = spite_block->shape;
+  int spite_width = spite_block->cols;
+  int spite_height = spite_block->rows;
 
   for (int y = 0; y < spite_height; y++) {
     for (int x = 0; x < spite_width; x++) {
       int idx = y * spite_width + x;
-      int cell = spite_shape[idx];
-      // 非有效格子
-      if (!cell)
-        continue;
-
-      if (predicate(x, y)) {
-        return true;
+      int point = spite_shape[idx];
+      if (point) {
+        board_draw_cell_clip(spite_x + x, spite_y + y, fi_cell_color);
       }
-    }
-  }
-  return false;
-}
-
-/**
- * 判断是否一个有效格子满足条件.
- *
- * \param predicate 判断回调
- * \return
- */
-void spite_foreach_cell(void (*predicate)(int, int)) {
-  int* spite_shape = block_get_shape(spite_block_id, spite_block_sub_id);
-
-  for (int y = 0; y < spite_height; y++) {
-    for (int x = 0; x < spite_width; x++) {
-      int idx = y * spite_width + x;
-      int cell = spite_shape[idx];
-      if (!cell)
-        continue;
-
-      predicate(x, y);
     }
   }
 }

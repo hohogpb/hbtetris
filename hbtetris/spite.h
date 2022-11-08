@@ -1,5 +1,7 @@
 #pragma once
 
+#include "block.h"
+
 void spite_new();
 
 void spite_draw();
@@ -19,13 +21,13 @@ int spite_get_cell(int x, int y);
 int spite_get_x();
 int spite_get_y();
 
-bool spite_some_cell(bool (*predicate)(int, int));
+block_t* spite_get_rotate_shape();
 
-void spite_foreach_cell(void (*predicate)(int, int));
+bool spite_some_cell(int dx, int dy, bool (*predicate)(int, int));
 
-int* spite_get_rotate_shape();
+void spite_foreach_cell(int dx, int dy, void (*predicate)(int, int));
 
-int spite_get_id();
-int spite_get_sub_id();
-
-void spite_get_rotate_id(int* id, int* subid);
+bool spite_can_move_left();
+bool spite_can_move_right();
+bool spite_can_move_down();
+bool spite_can_rotate();

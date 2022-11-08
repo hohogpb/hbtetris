@@ -18,16 +18,10 @@
     <ClCompile Include="board.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="draw.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="scene.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="shape.cpp">
+    <ClCompile Include="block.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="spite.cpp">
@@ -36,18 +30,48 @@
     <ClCompile Include="timer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="winmain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="memdc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="config.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="score.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="audio.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="spite_queue.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="scene_stop.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="scene_play.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="speed.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="level.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="board.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="draw.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="scene.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="shape.h">
+    <ClInclude Include="block.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="spite.h">
@@ -56,5 +80,43 @@
     <ClInclude Include="timer.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="memdc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="score.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="audio.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="spite_queue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="scene_stop.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="scene_play.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="speed.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="level.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="hbtetris.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

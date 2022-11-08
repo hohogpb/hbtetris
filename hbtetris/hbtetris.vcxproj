@@ -20,20 +20,42 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="board.cpp" />
-    <ClCompile Include="draw.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="config.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="level.cpp" />
+    <ClCompile Include="memdc.cpp" />
+    <ClCompile Include="audio.cpp" />
+    <ClCompile Include="scene_play.cpp" />
+    <ClCompile Include="speed.cpp" />
+    <ClCompile Include="spite_queue.cpp" />
     <ClCompile Include="scene.cpp" />
-    <ClCompile Include="shape.cpp" />
+    <ClCompile Include="block.cpp" />
+    <ClCompile Include="score.cpp" />
     <ClCompile Include="spite.cpp" />
+    <ClCompile Include="scene_stop.cpp" />
     <ClCompile Include="timer.cpp" />
+    <ClCompile Include="winmain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="board.h" />
-    <ClInclude Include="draw.h" />
+    <ClInclude Include="config.h" />
+    <ClInclude Include="game.h" />
+    <ClInclude Include="level.h" />
+    <ClInclude Include="memdc.h" />
+    <ClInclude Include="audio.h" />
+    <ClInclude Include="scene_play.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="speed.h" />
+    <ClInclude Include="spite_queue.h" />
     <ClInclude Include="scene.h" />
-    <ClInclude Include="shape.h" />
+    <ClInclude Include="block.h" />
+    <ClInclude Include="score.h" />
     <ClInclude Include="spite.h" />
+    <ClInclude Include="scene_stop.h" />
     <ClInclude Include="timer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="hbtetris.rc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -93,9 +115,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -124,8 +147,9 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

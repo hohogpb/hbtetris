@@ -6,7 +6,8 @@ bool timer_init(timer_t* timer,
                 LONGLONG counter,
                 double seconds,
                 void (*callback)(void*),
-                void* meta) {
+                void* meta,
+                bool disable) {
   if (!timer)
     return false;
 
@@ -14,6 +15,7 @@ bool timer_init(timer_t* timer,
   timer->seconds = seconds;
   timer->callback = callback;
   timer->meta = meta;
+  timer->disable = disable;
   return true;
 }
 
@@ -29,10 +31,22 @@ void timer_advanced(timer_t* timer) {
   if (seconds < timer->seconds)
     return;
 
-  if (timer->callback)
+  if (timer->callback && !timer->disable)
     timer->callback(timer->meta);
 
   timer->counter = counter;
+}
+
+void timer_enable(timer_t* timer) {
+  timer->disable = false;
+}
+
+void timer_disable(timer_t* timer) {
+  timer->disable = true;
+}
+
+void timer_set_interval(timer_t* timer, double secs) {
+  timer->seconds = secs;
 }
 
 timer_t timer1;
@@ -49,8 +63,14 @@ void timer1_set_callback(void (*callback)(void*)) {
   timer1.callback = callback;
 }
 
-// cur_brick = generate_brick();
+void timer1_enable() {
+  timer_enable(&timer1);
+}
 
-// timer_init(&timer1, 0, 0.2, updatescene, scene)
+void timer1_disable() {
+  timer_disable(&timer1);
+}
 
-// timer_step(&timer1);
+void timer1_set_interval(double secs) {
+  timer_set_interval(&timer1, secs);
+}
