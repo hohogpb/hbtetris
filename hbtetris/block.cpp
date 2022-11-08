@@ -280,6 +280,9 @@ block_group_t* groups[] = {
 
 // clang-format on
 
+// 排序id，可以供bag7使用
+int block_order_ids[] = {'I', 'J', 'L', 'O', 'S', 'T', 'Z'};
+
 block_t* block_random() {
   // 随机选择id
   // int id_count = sizeof(block_ids) / sizeof(int);
@@ -293,13 +296,24 @@ block_t* block_random() {
   return ablock;
 }
 
+// 通过id获得组
+block_group_t* block_get_group_by_id(int id) {
+  int group_idx = id - 'A';
+  return groups[group_idx];
+}
+
 // 获取方块所在分组
 block_group_t* block_get_group(block_t* block) {
   int major_id = BLK_MAJOR_ID(block->id);
   if (major_id < 'A' || major_id > 'Z')
     return nullptr;
-  int group_idx = major_id - 'A';
-  return groups[group_idx];
+  return block_get_group_by_id(major_id);
+}
+
+// 获取分组第一个方块
+block_t* block_get(int id) {
+  block_group_t* group = block_get_group_by_id(id);
+  return group->blocks[0];
 }
 
 // 找出旋转后的子图形

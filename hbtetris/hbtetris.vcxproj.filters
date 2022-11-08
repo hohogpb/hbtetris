@@ -63,6 +63,9 @@
     <ClCompile Include="level.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="bag7.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="board.h">
@@ -111,6 +114,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="level.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="bag7.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

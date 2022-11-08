@@ -28,3 +28,6 @@ void block_foreach_cell(block_t* block,
                         void (*predicate)(int, int));
 
 int block_get_cell(block_t* block, int x, int y);
+
+
+block_t* block_get(int id);

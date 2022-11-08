@@ -1,12 +1,21 @@
 #include "spite_queue.h"
+#include "bag7.h"
 #include "block.h"
 #include "config.h"
 #include "memdc.h"
 
-block_t* next_block = 0;
+// block_t* next_block = 0;
 
 int next_spite_x = 250;
 int next_spite_y = 200;
+
+block_t* spite_queue_get() {
+  int id = bag7_pick();
+
+  // 取下一个块
+  block_t* block = block_get(id);
+  return block;
+}
 
 // 绘制小方块，逻辑层面
 void next_spite_draw_cell(int col, int row, int color) {
@@ -32,28 +41,18 @@ void next_spite_draw_cell(int col, int row, int color) {
 
 // 绘制小方块，逻辑层面
 void next_spite_draw() {
-  if (!next_block)
-    return;
+  int id = bag7_next();
 
-  for (int y = 0; y < next_block->rows; y++) {
-    for (int x = 0; x < next_block->cols; x++) {
-      int idx = y * next_block->cols + x;
-      int point = next_block->shape[idx];
+  // 取下一个块
+  block_t* block = block_get(id);
+
+  for (int y = 0; y < block->rows; y++) {
+    for (int x = 0; x < block->cols; x++) {
+      int idx = y * block->cols + x;
+      int point = block->shape[idx];
       int color = point ? fi_cell_color : bk_cell_color;
 
       next_spite_draw_cell(x, y, color);
     }
   }
-}
-
-block_t* spite_queue_get() {
-  // 取下一个块
-  block_t* block = next_block;
-  // 如果没有，生成一个
-  if (!block)
-    block = block_random();
-
-  // 更新下一块
-  next_block = block_random();
-  return block;
 }

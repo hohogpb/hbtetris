@@ -32,3 +32,5 @@ void board_draw_valid_cells();
 void board_draw_all_cells();
 
 void board_draw_cell_clip(int col, int row, int color);
+
+void board_gameover_animation();

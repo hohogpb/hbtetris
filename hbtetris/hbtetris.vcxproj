@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="bag7.cpp" />
     <ClCompile Include="board.cpp" />
     <ClCompile Include="config.cpp" />
     <ClCompile Include="game.cpp" />
@@ -37,6 +38,7 @@
     <ClCompile Include="winmain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bag7.h" />
     <ClInclude Include="board.h" />
     <ClInclude Include="config.h" />
     <ClInclude Include="game.h" />

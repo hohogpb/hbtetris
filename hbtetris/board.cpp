@@ -212,7 +212,7 @@ void board_blink_rows(int* rows, int count) {
   for (int i = 0; i < 3; i++) {
     // board_clear_rows(rows, count);
     // board_draw();
-    board_draw_rows(rows, count, 0xff);
+    board_draw_rows(rows, count, bk_cell_color);
     memdc_swap();
     Sleep(100);
 
@@ -300,5 +300,19 @@ void board_draw_base() {
       int color = bk_cell_color;
       board_draw_cell(x, y, color);
     }
+  }
+}
+
+void board_gameover_animation() {
+  for (int y = board.rows-1; y >= 0; y--) {
+    board_draw_row(y, fi_cell_color);
+    memdc_swap();
+    Sleep(20);
+  }
+
+  for (int y = 0; y < board.rows; y++) {
+    board_draw_row(y, bk_cell_color);
+    memdc_swap();
+    Sleep(20);
   }
 }

@@ -4,6 +4,7 @@
 #include <tchar.h>
 #include <time.h>
 #include <windows.h>
+#include "bag7.h"
 #include "game.h"
 #include "memdc.h"
 #include "resource.h"
@@ -53,6 +54,7 @@ int wWinMain(HINSTANCE hInstance,
   srand(time(0));
   memdc_init(width, height, hWnd);
   timer1_init(1, 0);
+  bag7_init();
 
   game_init();
 

@@ -20,6 +20,7 @@ void score_increace_by_rows(int rows) {
     score += 100;
   }
   
+
 }
 
 void score_draw() {

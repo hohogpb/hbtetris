@@ -101,6 +101,7 @@ void play_scene_check_clear() {
 void play_scene_check_gameover() {
   if (board_check_full()) {
     //board_clear();
+    board_gameover_animation();
     game_stop();
   }
 }
@@ -183,3 +184,4 @@ void play_scene_resume() {
   timer1_set_callback(play_scene_timerfn);
   // enbaleinput
 }
+
