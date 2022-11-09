@@ -1,12 +1,14 @@
 #include "level.h"
 #include <tchar.h>
+#include "fonts.h"
+#include "lcd.h"
 #include "memdc.h"
 
 int level = 1;
 
 void level_draw() {
-  TCHAR str[256] = {0};
-  _stprintf_s(str, L"级别: %d", level);
+  memdc_setfont(fonts_get_text_font());
+  memdc_drawtext(L"级别", 240, 180, 80, 30, DT_LEFT);
 
-  memdc_drawtext(str, 250, 80);
+  lcd_draw_num(level, 240, 210, 8);
 }

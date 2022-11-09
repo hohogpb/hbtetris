@@ -5,6 +5,7 @@
 #include <time.h>
 #include <windows.h>
 #include "bag7.h"
+#include "fonts.h"
 #include "game.h"
 #include "memdc.h"
 #include "resource.h"
@@ -35,8 +36,8 @@ int wWinMain(HINSTANCE hInstance,
   wcex.lpszClassName = szWindowClass;
   RegisterClassEx(&wcex);
 
-  int width = 600;
-  int height = 600;
+  int width = 375;
+  int height = 500;
 
   // ´´½¨´°¿Ú
   HWND hWnd = CreateWindow(szWindowClass, szTitle,
@@ -55,6 +56,7 @@ int wWinMain(HINSTANCE hInstance,
   memdc_init(width, height, hWnd);
   timer1_init(1, 0);
   bag7_init();
+  fonts_init();
 
   game_init();
 

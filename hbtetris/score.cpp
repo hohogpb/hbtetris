@@ -1,6 +1,8 @@
 #include "score.h"
 #include <stdio.h>
 #include <tchar.h>
+#include "fonts.h"
+#include "lcd.h"
 #include "memdc.h"
 
 int score = 0;
@@ -19,13 +21,11 @@ void score_increace_by_rows(int rows) {
   } else if (rows == 4) {
     score += 100;
   }
-  
-
 }
 
 void score_draw() {
-  TCHAR str[256] = {0};
-  _stprintf_s(str, L"得分:%d", score);
+  memdc_setfont(fonts_get_text_font());
+  memdc_drawtext(L"得分", 240, 20, 80, 30, DT_LEFT);
 
-  memdc_drawtext(str, 250, 20);
+  lcd_draw_num(score, 240, 50, 888888);
 }

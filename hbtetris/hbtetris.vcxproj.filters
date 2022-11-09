@@ -66,6 +66,12 @@
     <ClCompile Include="bag7.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="fonts.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lcd.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="board.h">
@@ -117,6 +123,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="bag7.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="fonts.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lcd.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

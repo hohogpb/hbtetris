@@ -2,12 +2,13 @@
 #include "bag7.h"
 #include "block.h"
 #include "config.h"
+#include "fonts.h"
 #include "memdc.h"
 
 // block_t* next_block = 0;
 
 int next_spite_x = 250;
-int next_spite_y = 200;
+int next_spite_y = 290;
 
 block_t* spite_queue_get() {
   int id = bag7_pick();
@@ -41,6 +42,9 @@ void next_spite_draw_cell(int col, int row, int color) {
 
 // 绘制小方块，逻辑层面
 void next_spite_draw() {
+  memdc_setfont(fonts_get_text_font());
+  memdc_drawtext(L"下一个", 240, 260, 80, 30, DT_LEFT);
+
   int id = bag7_next();
 
   // 取下一个块

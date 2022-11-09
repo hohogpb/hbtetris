@@ -22,7 +22,9 @@
     <ClCompile Include="bag7.cpp" />
     <ClCompile Include="board.cpp" />
     <ClCompile Include="config.cpp" />
+    <ClCompile Include="fonts.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="lcd.cpp" />
     <ClCompile Include="level.cpp" />
     <ClCompile Include="memdc.cpp" />
     <ClCompile Include="audio.cpp" />
@@ -41,7 +43,9 @@
     <ClInclude Include="bag7.h" />
     <ClInclude Include="board.h" />
     <ClInclude Include="config.h" />
+    <ClInclude Include="fonts.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="lcd.h" />
     <ClInclude Include="level.h" />
     <ClInclude Include="memdc.h" />
     <ClInclude Include="audio.h" />

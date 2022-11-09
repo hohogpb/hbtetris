@@ -22,6 +22,19 @@ void memdc_setfillcolor(int color);
 
 void memdc_setbkcolor(int color);
 
+int memdc_settextcolor(int color);
+
 void memdc_cleardevice();
 
-void memdc_drawtext(const TCHAR* str, int x, int y);
+void memdc_textout(const TCHAR* str, int x, int y);
+
+void memdc_drawtext(const TCHAR* str,
+                    int x,
+                    int y,
+                    int width,
+                    int height,
+                    int format = DT_VCENTER | DT_CENTER | DT_SINGLELINE);
+
+HFONT memdc_setfont(HFONT hfont);
+
+int memdc_setbkmode(int mode);

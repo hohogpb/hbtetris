@@ -1,14 +1,16 @@
 #include "game.h"
 #include "board.h"
 #include "config.h"
+#include "level.h"
 #include "memdc.h"
 #include "scene.h"
 #include "scene_play.h"
 #include "scene_stop.h"
 #include "score.h"
-#include "spite.h"
-#include "timer.h"
 #include "speed.h"
+#include "spite.h"
+#include "spite_queue.h"
+#include "timer.h"
 
 enum { GAME_PLAYING, GAME_PAUSE, GAME_STOPED };
 
@@ -56,6 +58,14 @@ void game_render() {
   memdc_cleardevice();
 
   board_draw_base();
+
+  score_draw();
+
+  level_draw();
+
+  speed_draw();
+
+  next_spite_draw();
 
   if (scene) {
     scene->render();

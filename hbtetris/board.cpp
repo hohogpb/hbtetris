@@ -281,16 +281,18 @@ void board_draw_valid_cells() {
 // 绘制游戏板基本面
 void board_draw_base() {
   //
-  memdc_setlinecolor(fi_cell_color);
-
-  int rect_x = board.x - 5;
-  int rect_y = board.y - 5;
-  int rect_right =
-      board.x + board.cols * (board.cell_width + board.cell_spacing) + 4;
-  int rect_bottom =
-      board.y + board.rows * (board.cell_width + board.cell_spacing) + 4;
+  int border_gap = 3;
+  int rect_x = board.x - border_gap;
+  int rect_y = board.y - border_gap;
+  int rect_right = board.x +
+                   board.cols * (board.cell_width + board.cell_spacing) +
+                   (border_gap - 1);
+  int rect_bottom = board.y +
+                    board.rows * (board.cell_width + board.cell_spacing) +
+                    (border_gap - 1);
 
   // 绘制外侧边框
+  memdc_setlinecolor(RGB(114, 128, 92));
   memdc_rectangle(rect_x, rect_y, rect_right, rect_bottom);
 
   for (int y = 0; y < board.rows; y++) {
@@ -304,7 +306,7 @@ void board_draw_base() {
 }
 
 void board_gameover_animation() {
-  for (int y = board.rows-1; y >= 0; y--) {
+  for (int y = board.rows - 1; y >= 0; y--) {
     board_draw_row(y, fi_cell_color);
     memdc_swap();
     Sleep(20);

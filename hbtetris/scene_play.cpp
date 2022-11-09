@@ -151,14 +151,6 @@ void play_scene_render() {
   board_draw_valid_cells();
 
   spite_draw();
-
-  score_draw();
-
-  level_draw();
-
-  speed_draw();
-
-  next_spite_draw();
 }
 
 void play_scene_init() {

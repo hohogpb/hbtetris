@@ -9,7 +9,10 @@ typedef struct {
   int linecolor;
   int fillcolor;
   int bkcolor;
+  int textcolor;
+  int bkmode;
   HWND hwnd;
+  HFONT hfont;
 } memdc_t;
 
 bool memdc_init(memdc_t* dc, int width, int height, HWND hwnd) {
@@ -38,6 +41,7 @@ bool memdc_init(memdc_t* dc, int width, int height, HWND hwnd) {
   dc->hdc = null_hdc;
   dc->bitmap = bitmap;
   dc->hwnd = hwnd;
+  dc->hfont = 0;
 
   return true;
 }
@@ -113,6 +117,13 @@ void memdc_fillrectangle(int x, int y, int right, int bottom) {
   ::DeleteObject(brush);
 }
 
+int memdc_settextcolor(int color) {
+  int old_textcolor = ::GetTextColor(memdc.hdc);
+  ::SetTextColor(memdc.hdc, color);
+  memdc.textcolor = color;
+  return old_textcolor;
+}
+
 void memdc_setlinecolor(int color) {
   memdc.linecolor = color;
 }
@@ -134,7 +145,36 @@ void memdc_cleardevice() {
   ::DeleteObject(brush);
 }
 
-void memdc_drawtext(const TCHAR* str, int x, int y) {
+HFONT memdc_setfont(HFONT hfont) {
+  if (!hfont)
+    return memdc.hfont;
+
+  HFONT holdfont = (HFONT)SelectObject(memdc.hdc, hfont);
+  memdc.hfont = hfont;
+
+  return holdfont;
+}
+
+void memdc_textout(const TCHAR* str, int x, int y) {
   int len = _tcslen(str);
   ::TextOut(memdc.hdc, x, y, str, len);
+}
+
+int memdc_setbkmode(int mode) {
+  int old_mode = ::SetBkMode(memdc.hdc, mode);
+  memdc.bkmode = mode;
+  return old_mode;
+}
+
+void memdc_drawtext(const TCHAR* str,
+                    int x,
+                    int y,
+                    int width,
+                    int height,
+                    int format) {
+  int len = _tcslen(str);
+
+  RECT rect = {x, y, x + width, y + height};
+
+  ::DrawText(memdc.hdc, str, len, &rect, format);
 }
