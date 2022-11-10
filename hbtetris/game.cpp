@@ -20,8 +20,6 @@ scene_t* scene;
 
 void game_init() {
   scene = stop_scene_get();
-
-  speed_inc();
 }
 
 void game_start() {

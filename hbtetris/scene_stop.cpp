@@ -1,4 +1,5 @@
 #include "scene_stop.h"
+#include "board.h"
 #include "fonts.h"
 #include "game.h"
 #include "memdc.h"
@@ -13,7 +14,7 @@ scene_t* stop_scene_get() {
   return &stop_scene;
 }
 
-void stop_scene_render() {
+void stop_scene_draw_text() {
   int x = 30;
   int y = 200 - 20;
   int width = 170;
@@ -26,6 +27,17 @@ void stop_scene_render() {
   memdc_setfont(fonts_get_text_font());
   memdc_drawtext(L"按任意键开始", x, y, width, height,
                  DT_VCENTER | DT_CENTER | DT_SINGLELINE);
+}
+
+void stop_scene_render() {
+  // animation
+  stop_scene_draw_text();
+  // memdc_swap();
+  // ::Sleep(400);
+  // 
+  // board_draw_base();
+  // memdc_swap();
+  // ::Sleep(400);
 }
 
 void stop_scene_handle_msg(int msg, int wparam, int lparam) {

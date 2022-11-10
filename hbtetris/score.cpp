@@ -3,6 +3,7 @@
 #include <tchar.h>
 #include "fonts.h"
 #include "lcd.h"
+#include "level.h"
 #include "memdc.h"
 
 int score = 0;
@@ -21,6 +22,8 @@ void score_increace_by_rows(int rows) {
   } else if (rows == 4) {
     score += 100;
   }
+
+  level_inc_rows(rows);
 }
 
 void score_draw() {

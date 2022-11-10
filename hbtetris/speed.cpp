@@ -7,13 +7,13 @@
 
 int speed = 1;
 
-void speed_inc() {
-  speed += 1;
-  speed_update();
-}
-
 void speed_update() {
   timer1_set_interval(1.0 / speed);
+}
+
+void speed_up() {
+  speed++;
+  speed_update();
 }
 
 void speed_draw() {
