@@ -8,7 +8,7 @@
 int level = 1;
 
 // 升级需要行数
-const int level_up_rows = 50;
+const int level_up_rows = 30;
 
 int level_up_counter = 0;
 

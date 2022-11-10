@@ -13,14 +13,16 @@ void score_reset() {
 }
 
 void score_increace_by_rows(int rows) {
+  int level = level_get();
+
   if (rows == 1) {
-    score += 10;
+    score += 40 * level;
   } else if (rows == 2) {
-    score += 30;
+    score += 100 * level;
   } else if (rows == 3) {
-    score += 60;
+    score += 300 * level;
   } else if (rows == 4) {
-    score += 100;
+    score += 1200 * level;
   }
 
   level_inc_rows(rows);

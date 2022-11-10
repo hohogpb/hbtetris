@@ -6,14 +6,14 @@
 
 #define LCD_BKCOLOR RGB(118, 131, 100)
 
-void lcd_draw_num(int num, int x, int y, int max) {
+void lcd_draw_num(int num, int x, int y, int bk) {
   TCHAR numstr[32] = {0};
 
   memdc_setfont(fonts_get_lcd_font());
 
   int old_color = memdc_settextcolor(LCD_BKCOLOR);
 
-  _stprintf_s(numstr, L"%d", max);
+  _stprintf_s(numstr, L"%d", bk);
   memdc_drawtext(numstr, x, y, 100, 50, DT_RIGHT);
 
 

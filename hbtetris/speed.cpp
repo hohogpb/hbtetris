@@ -22,3 +22,7 @@ void speed_draw() {
 
   lcd_draw_num(speed, 240, 130, 888888);
 }
+
+void speed_reset() {
+  speed = 1;
+}

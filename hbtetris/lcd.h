@@ -1,4 +1,4 @@
 #pragma once
 
 
-void lcd_draw_num(int num, int x, int y, int max);
+void lcd_draw_num(int num, int x, int y, int bk);

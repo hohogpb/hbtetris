@@ -160,7 +160,9 @@ void play_scene_init() {
 
   score_reset();
 
-  level_init();
+  level_reset();
+
+  speed_reset();
 
   timer1_set_callback(play_scene_timerfn);
 }
