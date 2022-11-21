@@ -247,6 +247,32 @@ block_t Z1 = {
   }
 };
 
+// 特殊方块~~~ 
+block_t X0 = {
+  .id= BLK_ID('X', 0), 
+  .cols = 4,
+  .rows = 4,
+  .shape = {
+    1, 0, 0, 1,
+    0, 1, 1, 0,
+    0, 1, 1, 0,
+    1, 0, 0, 1,
+  }
+};
+
+block_t A0 = {
+  .id= BLK_ID('A', 0), 
+  .cols = 4,
+  .rows = 4,
+  .shape = {
+    1, 1, 1, 1,
+    1, 1, 1, 1,
+    1, 1, 1, 1,
+    1, 1, 1, 1,
+  }
+};
+
+
 
 block_t* blocks[] = {
   &I0, &I1, 
@@ -256,6 +282,8 @@ block_t* blocks[] = {
   &S0, &S1,
   &T0, &T1, &T2, &T3,
   &Z0, &Z1,
+
+  &X0, &A0
 };
 
 block_group_t I = {'I', 2, {&I0, &I1}};
@@ -266,22 +294,24 @@ block_group_t S = {'S', 2, {&S0, &S1}};
 block_group_t T = {'T', 4, {&T0, &T1, &T2, &T3}};
 block_group_t Z = {'Z', 2, {&Z0, &Z1}};
 
+// 
+block_group_t X = {'X', 1, {&X0}};
+block_group_t A = {'A', 1, {&A0}};
 
 // 方便从id直接随机访问，如groups[id - 'A']
 // 索引 0 ~ A, 1 ~ B
 block_group_t* groups[] = {
 // A,  B,  C,  D,  E,  F,  G,  H,  I,  J,
-   0,  0,  0,  0,  0,  0,  0,  0, &I, &J,
+   &A,  0,  0,  0,  0,  0,  0,  0, &I, &J,
 // K,  L,  M,  N,  O,  P,  Q,  R,  S,  T,
    0, &L,  0,  0, &O,  0,  0,  0, &S, &T,
 // U,  V,  W,  X,  Y,  Z
-   0,  0,  0,  0,  0, &Z
+   0,  0,  0,  &X,  0, &Z
 };
 
 // clang-format on
 
-// 排序id，可以供bag7使用
-int block_order_ids[] = {'I', 'J', 'L', 'O', 'S', 'T', 'Z'};
+
 
 block_t* block_random() {
   // 随机选择id

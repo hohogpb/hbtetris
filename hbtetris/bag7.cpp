@@ -1,7 +1,12 @@
 #include "bag7.h"
 #include <stdlib.h>
 
-char bag[] = {'I', 'J', 'L', 'O', 'S', 'T', 'Z'};
+char bag[] = {
+    'I', //'J', 'L', 
+    'O', // 'S', 'T', 'Z',  // 常规
+    //'X', 
+    'A'                            // 自定义
+};
 
 int cursor = 0;
 
@@ -21,7 +26,7 @@ int cursor = 0;
  * 写完才知道这叫做 shuffle（洗牌）算法，
  */
 void bag7_regenerate() {
-  for (int i = 7; i > 0; i--) {
+  for (int i = sizeof(bag); i > 0; i--) {
     int j = rand() % i;
     // swap bag[i] bag[j]
     char tmp = bag[i - 1];
@@ -35,7 +40,7 @@ int bag7_pick() {
   int id = bag[cursor];
   cursor++;
 
-  if (cursor >= 7) {
+  if (cursor >= sizeof(bag)) {
     bag7_regenerate();
     cursor = 0;
   }

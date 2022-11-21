@@ -12,7 +12,7 @@
 #include "scene.h"
 #include "timer.h"
 
-TCHAR szTitle[100] = _T("¶íÂÞË¹·½¿é");
+TCHAR szTitle[100] = _T("HBTETRIS");
 
 TCHAR szWindowClass[100] = _T("HBTETRIS.WND");
 
