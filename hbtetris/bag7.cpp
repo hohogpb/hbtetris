@@ -2,10 +2,10 @@
 #include <stdlib.h>
 
 char bag[] = {
-    'I', //'J', 'L', 
-    'O', // 'S', 'T', 'Z',  // 常规
+    'I', 'J', 'L', 
+    'O',  'S', 'T', 'Z',  // 常规
     //'X', 
-    'A'                            // 自定义
+    //'A'                            // 自定义
 };
 
 int cursor = 0;
