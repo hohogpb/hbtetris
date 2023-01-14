@@ -60,6 +60,8 @@ void play_scene_fall_spite() {
     spite_move_down();
   }
 
+  audio_play_down();
+
   play_scene_spite_collision_handle();
 }
 
