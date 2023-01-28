@@ -4,10 +4,10 @@
 #include <stdio.h>
 #include <tchar.h>
 
-// playfromstart: string Pcommand = "play " + Alias + " from 0";
-// stop:  string Pcommand = "stop " + Alias;
-// close: string Pcommand = "close " + Alias;
-// loop:  string Pcommand = "play " + Alias + " repeat";
+// playfromstart: string Pcommand = "play "  + Alias + " from 0";
+// stop:          string Pcommand = "stop "  + Alias;
+// close:         string Pcommand = "close " + Alias;
+// loop:          string Pcommand = "play "  + Alias + " repeat";
 
 int mci_open_alias(const TCHAR* media, const TCHAR* alias) {
   TCHAR cmd[MAX_PATH] = {0};
